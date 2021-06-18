@@ -33,13 +33,13 @@ $ docker build -t regs-app .
 2. Após finalizado a instalação, execute este comando:
   
 ```
-$ docker run -d -p 3000:3000 --name new-regs-app regs-app
+$ docker run -d -p 8345:3000 --name new-regs-app regs-app
 ```
 
 3. Agora, abra no seu navegador a seguinte URL:
 
 ```
-localhost:3000
+localhost:8345
 ```
 
 ### **Com node:**
