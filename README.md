@@ -22,23 +22,38 @@ Tomei a liberdade de subir ela no Heroku no seguinte link:
 - Primeiro, clone o repositório aqui do git, utilizado o link fornecido no botão `code`;
 - Após clonado, entre na pasta raiz e siga os próximos passos:
 
-### Com docker:
+### **Com docker:**
 
 1. Execute o seguinte comando e aguarde terminar a instalação:
-- `docker build -t regs-app .`
+  
+```
+$ docker build -t regs-app .
+```
 
 2. Após finalizado a instalação, execute este comando:
-- `docker run -d -p 3000:3000 --name new-regs-app regs-app`
+  
+```
+$ docker run -d -p 3000:3000 --name new-regs-app regs-app
+```
 
 3. Agora, abra no seu navegador a seguinte URL:
-- `localhost:3000`
 
-### Com node:
+```
+localhost:3000
+```
+
+### **Com node:**
 1. Execute o seguinte comando e aguarde terminar a instalação:
-- `npm install`
+
+```
+$ npm install
+```
 
 2. Após finalizado a instalação, execute este comando:
-- `npm start`
+
+```
+$ npm start
+```
 
 **OBS:** quando terminar de testar a aplicação, aperte `CTRL + C` no terminal para finalizar o processo.
 
