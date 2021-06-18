@@ -1,7 +1,7 @@
 # Desafio frontend
 
 ## Proposta e organização
-O desafio consiste em criar duas páginas, na qual, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
+O desafio consiste em criar duas páginas, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
 - Nome completo;
 - CPF;
 - Telefone;
