@@ -1,8 +1,6 @@
 # Desafio frontend
 
 ## Proposta e organização
-A proposta do desafio é criar um registro de contas cadastradas e mostrar todo eles.
-
 O desafio consiste em criar duas páginas, na qual, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
 - Nome completo;
 - CPF;
