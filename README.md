@@ -1,4 +1,4 @@
-# Desafio frontend Leanwork
+# Desafio frontend
 
 ## Proposta e organização
 A proposta do desafio é criar um registro de contas cadastradas e mostrar todo eles, na qual é exigida a criação de duas páginas para o funcionamento correto.
@@ -29,6 +29,9 @@ Tomei a liberdade de subir ela no Heroku no seguinte link:
 
 2. Após finalizado a instalação, execute este comando:
 - `docker run -d -p 3000:3000 --name new-regs-app regs-app`
+
+3. Agora, abra no seu navegador a seguinte URL:
+- `localhost:3000`
 
 ### Com node:
 1. Execute o seguinte comando e aguarde terminar a instalação:
