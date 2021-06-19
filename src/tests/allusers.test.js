@@ -44,3 +44,44 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
     expect(usersCards).toHaveLength(4);
   });
 });
+
+describe('Verifica se todas as funcionalidades da página estão de acordo com o proposto', () => {
+  beforeEach(() => {
+    localStorage.setItem('logged', JSON.stringify(users[0]));
+  });
+
+  afterAll(() => {
+    localStorage.clear();
+  });
+
+  it('Verifica se ao clicar em "sair", o usúario é redirecionado para página de cadastro', () => {
+    const { container, history } = renderWithHistory(<AllUsers />);
+    const logoutButton = container.querySelector('#logout');
+
+    expect(localStorage.getItem('logged')).toBeTruthy();
+    expect(history.location.pathname).toBe('/users');
+
+    userEvent.click(logoutButton);
+
+    expect(history.location.pathname).toBe('/');
+    expect(localStorage.getItem('logged')).toBeFalsy();
+  });
+
+  it('Verifica se o usúario logado pode deletar seu usúario, sendo assim, redirecionado para página de cadastro', async () => {
+    const { container, history } = renderWithHistory(<AllUsers />);
+    const deleteUser = container.querySelector('button#delete');
+
+    expect(localStorage.getItem('logged')).toBeTruthy();
+    expect(history.location.pathname).toBe('/users');
+    userEvent.click(deleteUser);
+
+    const confirmMessage = await screen.findByText(/Você tem certeza disso*/);
+    expect(confirmMessage).toBeInTheDocument();
+
+    const confirmButton = screen.getByText(/Sim, quero deletar meu usúario*/);
+    userEvent.click(confirmButton);
+
+    expect(history.location.pathname).toBe('/');
+    expect(localStorage.getItem('logged')).toBeFalsy();
+  });
+});
