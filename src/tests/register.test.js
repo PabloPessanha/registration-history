@@ -36,3 +36,27 @@ describe('Verifica a existencia de elementos da página de registro/cadastro', (
     expect(mainImage).toHaveAttribute('alt', /Main coffe image/);
   });
 });
+
+describe('Verifica a ação da página com base nas ações', () => {
+  it('Verifica se todos os inputs estiverem preenchidos corretamente, ele redireciona para a página de usúarios', () => {
+
+  });
+  it('Verifica se aparece um aviso se o email não for válido', () => {
+
+  });
+  it('Verifica se aparece um aviso se o email já estiver cadastrado', () => {
+
+  });
+  it('Verifica se aparece um aviso se o CPF não for válido', () => {
+
+  });
+  it('Verifica se aparece um aviso se o CPF já estiver cadastrado', () => {
+
+  });
+  it('Verifica se aparece um aviso se o nome for preenchido de forma incorreta', () => {
+
+  });
+  it('Verifica se aparece um aviso se o telefone for preenchido de forma incorreta', () => {
+
+  });
+});
