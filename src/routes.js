@@ -9,7 +9,7 @@ export default function Routes() {
     <Router>
       <Switch>
         <Route exact path="/" component={AllUsers} />
-        <Route path="users" component={Register} />
+        <Route path="/users" component={Register} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
