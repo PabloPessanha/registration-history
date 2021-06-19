@@ -24,4 +24,14 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
     expect(header).toContainElement(loggedUser);
     expect(header).toContainElement(logoutButton);
   });
+
+  it('Verifica se a página possui um footer com o nome do autor, que redireciona para o perfil do git', () => {
+    const { container } = renderWithHistory(<AllUsers />);
+    const footer = container.querySelector('footer');
+    const profileLink = container.querySelector('footer>a');
+
+    expect(footer).toBeInTheDocument();
+    expect(footer).toContainElement(profileLink);
+    expect(profileLink).toHaveAttribute('href', 'https://github.com/PabloPessanha');
+  });
 });
