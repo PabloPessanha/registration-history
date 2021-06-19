@@ -1,15 +1,13 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/dom';
 import renderWithHistory from './renderWithHistory';
 import Register from '../pages/Register';
 
-const Render = renderWithHistory(<Register />);
-
 describe('Verifica a existencia de elementos da página de registro/cadastro', () => {
-  const { container, screen } = Render;
-
   it('Verifica se a página possui todos os inputs', () => {
+    const { container } = renderWithHistory(<Register />);
     const email = container.querySelector('#email-input');
     const cpf = container.querySelector('#cpf-input');
     const name = container.querySelector('#name-input');
@@ -22,6 +20,8 @@ describe('Verifica a existencia de elementos da página de registro/cadastro', (
   });
 
   it('Verifica se a página possui os dois botões', () => {
+    renderWithHistory(<Register />);
+
     const register = screen.getByText(/Cadastrar/);
     const login = screen.getByText(/Login/);
 
@@ -30,6 +30,7 @@ describe('Verifica a existencia de elementos da página de registro/cadastro', (
   });
 
   it('Verifica se página possui a imagem requirida', () => {
+    renderWithHistory(<Register />);
     const mainImage = screen.getByRole('img');
 
     expect(mainImage).toBeInTheDocument();
@@ -39,17 +40,16 @@ describe('Verifica a existencia de elementos da página de registro/cadastro', (
 });
 
 describe('Verifica a ação da página com base nas ações', () => {
-  const { container, screen, history, getAllByRole } = renderWithHistory(<Register />);
   const fakeUser = { name: 'Bruno souza', cpf: '147.945.234-54', email: 'bruno@gmail.com', tel: '(47) 98532-1914' };
-  const register = screen.getByText(/Cadastrar/);
 
   beforeEach(() => {
     localStorage.removeItem('users');
-    const inputs = getAllByRole('input');
-    inputs.forEach((input) => userEvent.clear(input));
   });
 
   it('Verifica se aparece um aviso se o email não for válido', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const email = container.querySelector('#email-input');
 
     userEvent.type(email, 'teste@gmail');
@@ -61,6 +61,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se aparece um aviso se o email já estiver cadastrado', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const email = container.querySelector('#email-input');
     localStorage.setItem('users', JSON.stringify(fakeUser));
 
@@ -73,6 +76,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se aparece um aviso se o CPF não for válido', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const cpf = container.querySelector('#cpf-input');
 
     userEvent.type(cpf, '1245123512');
@@ -84,6 +90,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se aparece um aviso se o CPF já estiver cadastrado', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const cpf = container.querySelector('#cpf-input');
     localStorage.setItem('users', JSON.stringify(fakeUser));
 
@@ -96,6 +105,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se aparece um aviso se o nome for preenchido de forma incorreta', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const name = container.querySelector('#name-input');
 
     userEvent.type(name, 'João');
@@ -107,6 +119,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se aparece um aviso se o telefone for preenchido de forma incorreta', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const tel = container.querySelector('#tel-input');
 
     userEvent.type(tel, '349612342');
@@ -118,6 +133,9 @@ describe('Verifica a ação da página com base nas ações', () => {
   });
 
   it('Verifica se todos os inputs estiverem preenchidos corretamente, ele redireciona para a página de usúarios', () => {
+    const { container, history } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
     const name = container.querySelector('#name-input');
     const email = container.querySelector('#email-input');
     const cpf = container.querySelector('#cpf-input');
