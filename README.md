@@ -1,9 +1,7 @@
 # Desafio frontend
 
 ## Proposta e organização
-A proposta do desafio é criar um registro de contas cadastradas e mostrar todo eles, na qual é exigida a criação de duas páginas para o funcionamento correto.
-
-O desafio consiste em criar duas páginas, na qual, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
+O desafio consiste em criar duas páginas, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
 - Nome completo;
 - CPF;
 - Telefone;
@@ -16,9 +14,11 @@ Caso tente acessar a página de resgistro sem ter feito login/cadastro, a págin
 #
 
 ## Como posso testar aplicação?
-Tomei a liberdade de subir ela no Heroku no seguinte link:
+Tomei a liberdade de fazer o deploy da aplicação no Heroku, está disponivel aqui: 
 
-**Entretanto, caso prefira, existem 2 maneiras de rodar em sua máquina.**
+*A aplicação demora cerca de 30 segundos pra abrir quando ninguém acessa por 30min, então aguarde um pouco.*
+
+Entretanto, caso prefira, existem 2 maneiras de rodar em sua máquina local.
 - Primeiro, clone o repositório aqui do git, utilizado o link fornecido no botão `code`;
 - Após clonado, entre na pasta raiz e siga os próximos passos:
 
@@ -59,10 +59,11 @@ $ npm start
 
 #
 
-## O que foi utilizado durante o desenvolvimento:
+## O que foi utilizado durante o desenvolvimento?
 - React;
 - React router dom;
 - Context API;
-- Testes unitários com RTL;
 - SCSS;
+- Testes unitários com RTL;
+- TDD;
 - Deploy na plataforma **Heroku**;
