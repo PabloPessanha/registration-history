@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { cpfFormatter, phoneFormatter } from '../../utils';
+import leanLogo from '../../assets/Leanwork-logo.svg';
 
 export default function RegisterInputs() {
   const [name, setName] = useState('');
@@ -41,27 +42,33 @@ export default function RegisterInputs() {
   }, [name, email, cpf, tel]);
 
   return (
-    <form className={styles}>
-      <label htmlFor="name-input">
-        Nome Completo
-        <input type="text" id="name-input" value={name} onChange={handleChange} />
-      </label>
-      <label htmlFor="email-input">
-        E-mail
-        <input type="text" id="email-input" value={email} onChange={handleChange} />
-      </label>
-      <label htmlFor="cpf-input">
-        CPF
-        <input type="text" id="cpf-input" value={cpf} onChange={handleChange} maxLength="14" />
-      </label>
-      <label htmlFor="tel-input">
-        Telefone
-        <input type="text" id="tel-input" value={tel} onChange={handleChange} maxLength="15" />
-      </label>
-      <div>
-        <button type="submit" onClick={handleSignup} disabled={!verifyInfos}>Cadastrar</button>
-        <Link to="/login">Login 🠖</Link>
+    <div className={styles.registerSide}>
+      <div className={styles.imageContainer}>
+        <img src={leanLogo} alt="Logo da lean" />
+        <h1>Lean cadastro</h1>
       </div>
-    </form>
+      <form>
+        <label htmlFor="name-input">
+          Nome Completo
+          <input type="text" id="name-input" value={name} onChange={handleChange} />
+        </label>
+        <label htmlFor="email-input">
+          E-mail
+          <input type="text" id="email-input" value={email} onChange={handleChange} />
+        </label>
+        <label htmlFor="cpf-input">
+          CPF
+          <input type="text" id="cpf-input" value={cpf} onChange={handleChange} maxLength="14" />
+        </label>
+        <label htmlFor="tel-input">
+          Telefone
+          <input type="text" id="tel-input" value={tel} onChange={handleChange} maxLength="15" />
+        </label>
+        <div>
+          <button type="submit" onClick={handleSignup} disabled={!verifyInfos}>Cadastrar</button>
+          <Link to="/login">Login 🠖</Link>
+        </div>
+      </form>
+    </div>
   );
 }
