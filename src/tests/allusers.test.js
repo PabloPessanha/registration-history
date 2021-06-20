@@ -70,7 +70,9 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
   it('Verifica se o usúario logado pode deletar seu usúario, sendo assim, redirecionado para página de cadastro', async () => {
     const { container, history } = renderWithHistory(<AllUsers />);
     const deleteUser = container.querySelector('button#delete');
+    const mainUser = users[0];
 
+    expect(JSON.parse(localStorage.getItem('users')).some(({ email }) => email === mainUser.email)).toBeTruthy();
     expect(localStorage.getItem('logged')).toBeTruthy();
     expect(history.location.pathname).toBe('/users');
     userEvent.click(deleteUser);
@@ -83,5 +85,6 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
 
     expect(history.location.pathname).toBe('/');
     expect(localStorage.getItem('logged')).toBeFalsy();
+    expect(JSON.parse(localStorage.getItem('users')).some(({ email }) => email === mainUser.email)).toBeFalsy();
   });
 });
