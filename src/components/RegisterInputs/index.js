@@ -34,7 +34,7 @@ export default function RegisterInputs() {
   }, [name, email, cpf, tel]);
 
   useEffect(() => {
-    const regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+    const regexEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (name.length > 8 && regexEmail.test(email) && cpf.length >= 14 && tel.length >= 14) {
       return setVerifyInfos(true);
     }
