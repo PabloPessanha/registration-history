@@ -5,7 +5,7 @@ import { screen } from '@testing-library/dom';
 import renderWithHistory from './renderWithHistory';
 import Register from '../pages/Register';
 
-describe('Verifica a existencia de elementos da página de registro/cadastro', () => {
+describe('Verifica a existencia de elementos da página de cadastro', () => {
   it('Verifica se a página possui todos os inputs', () => {
     const { container } = renderWithHistory(<Register />);
     const email = container.querySelector('#email-input');
@@ -29,107 +29,100 @@ describe('Verifica a existencia de elementos da página de registro/cadastro', (
     expect(login).toBeInTheDocument();
   });
 
-  it('Verifica se página possui a imagem requirida', () => {
-    renderWithHistory(<Register />);
-    const mainImage = screen.getByRole('img');
+  it('Verifica se página possui a imagem requerida', () => {
+    const { container } = renderWithHistory(<Register />);
+    const mainImage = container.querySelector('div.mainImage');
 
     expect(mainImage).toBeInTheDocument();
-    expect(mainImage).toHaveAttribute('src', '/bg-min.jpg');
-    expect(mainImage).toHaveAttribute('alt', /Main coffe image/);
   });
 });
 
-describe('Verifica a ação da página com base nas ações', () => {
-  const fakeUser = { name: 'Bruno souza', cpf: '147.945.234-54', email: 'bruno@gmail.com', tel: '(47) 98532-1914' };
-
-  beforeEach(() => {
-    localStorage.removeItem('users');
-  });
-
-  it('Verifica se aparece um aviso se o email não for válido', () => {
-    const { container } = renderWithHistory(<Register />);
-    const register = screen.getByText(/Cadastrar/);
-
-    const email = container.querySelector('#email-input');
-
-    userEvent.type(email, 'teste@gmail');
-    userEvent.click(register);
-
-    const emailWarning = screen.getByText(/O email está incorreto./);
-
-    expect(emailWarning).toBeInTheDocument();
-  });
-
-  it('Verifica se aparece um aviso se o email já estiver cadastrado', () => {
-    const { container } = renderWithHistory(<Register />);
-    const register = screen.getByText(/Cadastrar/);
-
-    const email = container.querySelector('#email-input');
-    localStorage.setItem('users', JSON.stringify(fakeUser));
-
-    userEvent.type(email, 'bruno@gmail.com');
-    userEvent.click(register);
-
-    const emailWarning = screen.getByText(/O email já está cadastrado. Tente fazer Login./);
-
-    expect(emailWarning).toBeInTheDocument();
-  });
-
-  it('Verifica se aparece um aviso se o CPF não for válido', () => {
-    const { container } = renderWithHistory(<Register />);
-    const register = screen.getByText(/Cadastrar/);
-
-    const cpf = container.querySelector('#cpf-input');
-
-    userEvent.type(cpf, '1245123512');
-    userEvent.click(register);
-
-    const cpfWarning = screen.getByText(/O CPF está incorreto, coloque 11 digitos./);
-
-    expect(cpfWarning).toBeInTheDocument();
-  });
-
-  it('Verifica se aparece um aviso se o CPF já estiver cadastrado', () => {
-    const { container } = renderWithHistory(<Register />);
-    const register = screen.getByText(/Cadastrar/);
-
-    const cpf = container.querySelector('#cpf-input');
-    localStorage.setItem('users', JSON.stringify(fakeUser));
-
-    userEvent.type(cpf, '14794523454');
-    userEvent.click(register);
-
-    const cpfWarning = screen.getByText(/O CPF já está cadastrado./);
-
-    expect(cpfWarning).toBeInTheDocument();
-  });
-
-  it('Verifica se aparece um aviso se o nome for preenchido de forma incorreta', () => {
+describe('Verifica o preenchimento dos campos da página de cadastro para o botão habilitar', () => {
+  it('Verifica se o campo "nome" deve possuir, no minimo, 8 caracteres', () => {
     const { container } = renderWithHistory(<Register />);
     const register = screen.getByText(/Cadastrar/);
 
     const name = container.querySelector('#name-input');
+    const email = container.querySelector('#email-input');
+    const cpf = container.querySelector('#cpf-input');
+    const tel = container.querySelector('#tel-input');
 
     userEvent.type(name, 'João');
-    userEvent.click(register);
+    userEvent.type(email, 'teste@gmail.com');
+    userEvent.type(cpf, '13523563211');
+    userEvent.type(tel, '11997235681');
+    expect(register).toBeDisabled();
 
-    const telWarning = screen.getByText(/O Nome está incorreto. Coloque, no minímo, 8 caracteres./);
-
-    expect(telWarning).toBeInTheDocument();
+    userEvent.clear(name);
+    userEvent.type(name, 'João Carlos');
+    expect(register).toBeEnabled();
   });
 
-  it('Verifica se aparece um aviso se o telefone for preenchido de forma incorreta', () => {
+  it('Verifica se o campo "email" deve conter o formato correto', () => {
     const { container } = renderWithHistory(<Register />);
     const register = screen.getByText(/Cadastrar/);
 
+    const name = container.querySelector('#name-input');
+    const email = container.querySelector('#email-input');
+    const cpf = container.querySelector('#cpf-input');
     const tel = container.querySelector('#tel-input');
 
-    userEvent.type(tel, '349612342');
-    userEvent.click(register);
+    userEvent.type(name, 'João Carlos');
+    userEvent.type(email, 'teste@gmail');
+    userEvent.type(cpf, '13523563211');
+    userEvent.type(tel, '11997235681');
+    expect(register).toBeDisabled();
 
-    const telWarning = screen.getByText(/O Telefone está incorreto. Coloque no formato DDD + 8 ou 9 digitos./);
+    userEvent.clear(email);
+    userEvent.type(email, 'teste.com');
+    expect(register).toBeDisabled();
 
-    expect(telWarning).toBeInTheDocument();
+    userEvent.clear(email);
+    userEvent.type(email, 'teste@gmail.com');
+    expect(register).toBeEnabled();
+  });
+
+  it('Verifica se o campo "CPF" deve possuir seus 11 dígitos', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
+    const name = container.querySelector('#name-input');
+    const email = container.querySelector('#email-input');
+    const cpf = container.querySelector('#cpf-input');
+    const tel = container.querySelector('#tel-input');
+
+    userEvent.type(name, 'João Carlos');
+    userEvent.type(email, 'teste@gmail.com');
+    userEvent.type(cpf, '1352356');
+    userEvent.type(tel, '11997235681');
+    expect(register).toBeDisabled();
+
+    userEvent.clear(cpf);
+    userEvent.type(cpf, '135235623');
+    expect(register).toBeDisabled();
+
+    userEvent.clear(cpf);
+    userEvent.type(cpf, '13523562423');
+    expect(register).toBeEnabled();
+  });
+
+  it('Verifica se o campo "telefone" deve possuir, no minimo, DDD+ 8 dígitos', () => {
+    const { container } = renderWithHistory(<Register />);
+    const register = screen.getByText(/Cadastrar/);
+
+    const name = container.querySelector('#name-input');
+    const email = container.querySelector('#email-input');
+    const cpf = container.querySelector('#cpf-input');
+    const tel = container.querySelector('#tel-input');
+
+    userEvent.type(name, 'João');
+    userEvent.type(email, 'teste@gmail.com');
+    userEvent.type(cpf, '13523563211');
+    userEvent.type(tel, '11997235681');
+    expect(register).toBeDisabled();
+
+    userEvent.type(name, 'João Carlos');
+    expect(register).toBeEnabled();
   });
 
   it('Verifica se todos os inputs estiverem preenchidos corretamente, ele redireciona para a página de usúarios', () => {
