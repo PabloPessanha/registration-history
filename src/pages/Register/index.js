@@ -1,9 +1,10 @@
 import React from 'react';
+import { RegisterInputs } from '../../components';
 
 export default function Register() {
   return (
-    <div>
-      <h1>Página de Registro</h1>
-    </div>
+    <>
+      <RegisterInputs />
+    </>
   );
 }
