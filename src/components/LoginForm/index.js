@@ -48,8 +48,8 @@ export default function LoginForm() {
         <h1>Lean login</h1>
       </div>
       <form>
-        { warningUser === 'no user' && <h4 className={styles.warning}>Usuário não existe.</h4>}
-        { warningUser === 'cpf not compatible' && <h4 className={styles.warning}>CPF não compativel.</h4>}
+        { warningUser === 'no user' && <h4 id="warning" className={styles.warning}>Usuário não existe.</h4>}
+        { warningUser === 'cpf not compatible' && <h4 id="warning" className={styles.warning}>CPF não compativel.</h4>}
         <label htmlFor="email-input">
           E-mail
           <input type="text" id="email-input" value={email} onChange={handleChange} />
