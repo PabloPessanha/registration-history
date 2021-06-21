@@ -125,7 +125,7 @@ describe('Verifica o preenchimento dos campos da página de cadastro para o bot�
     expect(register).toBeEnabled();
   });
 
-  it('Verifica se todos os inputs estiverem preenchidos corretamente, ele redireciona para a página de usúarios', () => {
+  it('Verifica se todos os inputs estiverem preenchidos corretamente, ele redireciona para a página de usuários', () => {
     const { container, history } = renderWithHistory(<Register />);
     const register = screen.getByText(/Cadastrar/);
 

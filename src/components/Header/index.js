@@ -24,7 +24,7 @@ export default function Header() {
           <img src={leanLogo} alt="lean logo" />
         </a>
         <div className={styles.userInfo}>
-          <span>{`Usúario: ${user}`}</span>
+          <span>{`Usuário: ${user}`}</span>
           <button type="button" onClick={handleLogout}>Sair</button>
         </div>
       </div>

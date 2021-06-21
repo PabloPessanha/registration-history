@@ -14,11 +14,11 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
     localStorage.clear();
   });
 
-  it('Verifica se a página possui um header com a logo da empresa, email do usúario, e um botão sair', () => {
+  it('Verifica se a página possui um header com a logo da empresa, email do usuário, e um botão sair', () => {
     const { container } = renderWithHistory(<AllUsers />);
     const header = container.querySelector('header');
     const leanLogo = screen.getByAltText('Logo da leanwork');
-    const loggedUser = screen.getByText(`Usúario: ${users[0].email}`);
+    const loggedUser = screen.getByText(`Usuário: ${users[0].email}`);
     const logoutButton = container.querySelector('#logout');
 
     expect(header).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
     expect(profileLink).toHaveAttribute('href', 'https://github.com/PabloPessanha');
   });
 
-  it('Verifica se os usúarios já cadastrados são renderizados em cards na tela', () => {
+  it('Verifica se os usuários já cadastrados são renderizados em cards na tela', () => {
     renderWithHistory(<AllUsers />);
     const usersCards = screen.getAllByTestId('card');
 
@@ -54,7 +54,7 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
     localStorage.clear();
   });
 
-  it('Verifica se ao clicar em "sair", o usúario é redirecionado para página de cadastro', () => {
+  it('Verifica se ao clicar em "sair", o usuário é redirecionado para página de cadastro', () => {
     const { container, history } = renderWithHistory(<AllUsers />);
     const logoutButton = container.querySelector('#logout');
 
@@ -67,7 +67,7 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
     expect(localStorage.getItem('logged')).toBeFalsy();
   });
 
-  it('Verifica se o usúario logado pode deletar seu usúario, sendo assim, redirecionado para página de cadastro', async () => {
+  it('Verifica se o usuário logado pode deletar seu usuário, sendo assim, redirecionado para página de cadastro', async () => {
     const { container, history } = renderWithHistory(<AllUsers />);
     const deleteUser = container.querySelector('button#delete');
     const mainUser = users[0];
@@ -80,7 +80,7 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
     const confirmMessage = await screen.findByText(/Você tem certeza disso*/);
     expect(confirmMessage).toBeInTheDocument();
 
-    const confirmButton = screen.getByText(/Sim, quero deletar meu usúario*/);
+    const confirmButton = screen.getByText(/Sim, quero deletar meu usuário*/);
     userEvent.click(confirmButton);
 
     expect(history.location.pathname).toBe('/');
