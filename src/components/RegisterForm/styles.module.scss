@@ -92,5 +92,13 @@
         }
       }
     }
+
+    .warning {
+      color: red;
+      font-size: 1.2rem;
+      background: inherit;
+      text-align: center;
+      padding: 18px;
+    }
   }
 }

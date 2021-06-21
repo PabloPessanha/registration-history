@@ -10,6 +10,7 @@ export default function RegisterForm() {
   const [cpf, setCpf] = useState('');
   const [tel, setTel] = useState('');
   const [verifyInfos, setVerifyInfos] = useState(false);
+  const [warning, setWarning] = useState(false);
   const history = useHistory();
 
   const handleChange = useCallback(({ target }) => {
@@ -34,11 +35,15 @@ export default function RegisterForm() {
     if (!users) {
       localStorage.setItem('users', JSON.stringify([user]));
     } else {
+      const repeatedEmail = users.find((usr) => usr.email === email);
+      const repeatedCPF = users.find((usr) => usr.cpf === cpf);
+      if (repeatedEmail || repeatedCPF) return setWarning(true);
+
       localStorage.setItem('users', JSON.stringify([...users, user]));
     }
 
     localStorage.setItem('logged', JSON.stringify(user));
-    history.push('/users');
+    return history.push('/users');
   }, [name, email, cpf, tel]);
 
   useEffect(() => {
@@ -56,6 +61,7 @@ export default function RegisterForm() {
         <h1>Lean cadastro</h1>
       </div>
       <form>
+        { warning && <h4 className={styles.warning}>Email/CPF já cadastrado.</h4>}
         <label htmlFor="name-input">
           Nome Completo
           <input type="text" id="name-input" value={name} onChange={handleChange} />
