@@ -6,13 +6,6 @@ import renderWithHistory from './renderWithHistory';
 import NotFound from '../pages/NotFound';
 
 describe('Verifica se a página "Not found", tem todos os elementos necessários', () => {
-  it('Verifica se possui uma imagem', () => {
-    renderWithHistory(<NotFound />);
-    const image = screen.getByRole('img');
-
-    expect(image).toBeInTheDocument();
-  });
-
   it('Verifica se possui um texto H1, dizendo que a página não foi encontrar', () => {
     renderWithHistory(<NotFound />);
     const notFoundText = screen.getByText(/Página não encontrada/);
@@ -26,10 +19,10 @@ describe('Verifica se a página "Not found", tem todos os elementos necessários
     const homeButton = screen.getByText(/Voltar para página de registro./);
 
     expect(homeButton).toBeInTheDocument();
-    expect(homeButton.tagName).toBe('BUTTON');
+    expect(homeButton.tagName).toBe('A');
 
     userEvent.click(homeButton);
 
-    expect(history.location.pathname).toBeInTheDocument();
+    expect(history.location.pathname).toBe('/');
   });
 });
