@@ -1,0 +1,23 @@
+.card {
+  $shadow: #dfd8d8;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 4px 2px 4px $shadow;
+
+  max-width: 550px;
+  margin: 18px auto;
+  padding: 32px;
+  border-radius: 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    background-color: inherit;
+    font-weight: 600;
+    color: #f44049;
+    font-size: 1rem;
+  }
+}
