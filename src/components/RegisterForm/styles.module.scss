@@ -101,4 +101,21 @@
       padding: 18px;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    width: 100vw;
+    align-items: center;
+    form {
+      margin-top: 42px;
+      div {
+        flex-direction: column;
+        button {
+          margin-top: 24px;
+        }
+        a {
+          margin-top: 18px;
+        }
+      }
+    }
+  }
 }
