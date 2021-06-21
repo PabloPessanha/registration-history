@@ -17,6 +17,7 @@ export default function AllUsers() {
   }, []);
 
   const handleDelete = useCallback(() => {
+    window.scrollTo(0, 0);
     setConfirmDelete(true);
   });
 
