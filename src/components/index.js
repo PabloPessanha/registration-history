@@ -1,4 +1,4 @@
 import RegisterInputs from './RegisterInputs';
+import Header from './Header';
 
-const algo = 'a';
-export { RegisterInputs, algo };
+export { RegisterInputs, Header };
