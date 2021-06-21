@@ -1,16 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import leanLogo from '../../assets/Leanwork-logo.svg';
 
-export default function Header() {
-  const [user, setUser] = useState('');
+export default function Header({ user }) {
   const history = useHistory();
-
-  useEffect(() => {
-    const userEmail = JSON.parse(localStorage.getItem('logged'));
-    setUser(userEmail.email);
-  }, []);
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem('logged');
@@ -31,3 +26,7 @@ export default function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  user: PropTypes.string.isRequired,
+};
