@@ -1,11 +1,11 @@
 import React from 'react';
-import { RegisterInputs } from '../../components';
+import { RegisterForm } from '../../components';
 import styles from './styles.module.scss';
 
 export default function Register() {
   return (
     <div className={styles.homepage}>
-      <RegisterInputs />
+      <RegisterForm />
       <div className={styles.mainImage} />
     </div>
   );
