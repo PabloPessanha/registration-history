@@ -17,7 +17,7 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
   it('Verifica se a página possui um header com a logo da empresa, email do usuário, e um botão sair', () => {
     const { container } = renderWithHistory(<AllUsers />);
     const header = container.querySelector('header');
-    const leanLogo = screen.getByAltText('Logo da leanwork');
+    const leanLogo = screen.getByAltText('lean logo');
     const loggedUser = screen.getByText(`Usuário: ${users[0].email}`);
     const logoutButton = container.querySelector('#logout');
 
@@ -30,7 +30,7 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
   it('Verifica se a página possui um footer com o nome do autor, e um link para o perfil do git', () => {
     const { container } = renderWithHistory(<AllUsers />);
     const footer = container.querySelector('footer');
-    const profileLink = container.querySelector('footer>a');
+    const profileLink = container.querySelector('footer>h4>a');
 
     expect(footer).toBeInTheDocument();
     expect(footer).toContainElement(profileLink);
@@ -48,6 +48,7 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
 describe('Verifica se todas as funcionalidades da página estão de acordo com o proposto', () => {
   beforeEach(() => {
     localStorage.setItem('logged', JSON.stringify(users[0]));
+    localStorage.setItem('users', JSON.stringify([users[0]]));
   });
 
   afterAll(() => {
@@ -59,11 +60,10 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
     const logoutButton = container.querySelector('#logout');
 
     expect(localStorage.getItem('logged')).toBeTruthy();
-    expect(history.location.pathname).toBe('/users');
 
     userEvent.click(logoutButton);
 
-    expect(history.location.pathname).toBe('/');
+    expect(history.location.pathname).toBe('/login');
     expect(localStorage.getItem('logged')).toBeFalsy();
   });
 
@@ -74,13 +74,12 @@ describe('Verifica se todas as funcionalidades da página estão de acordo com o
 
     expect(JSON.parse(localStorage.getItem('users')).some(({ email }) => email === mainUser.email)).toBeTruthy();
     expect(localStorage.getItem('logged')).toBeTruthy();
-    expect(history.location.pathname).toBe('/users');
     userEvent.click(deleteUser);
 
     const confirmMessage = await screen.findByText(/Você tem certeza disso*/);
     expect(confirmMessage).toBeInTheDocument();
 
-    const confirmButton = screen.getByText(/Sim, quero deletar meu usuário*/);
+    const confirmButton = screen.getByText(/Sim*/);
     userEvent.click(confirmButton);
 
     expect(history.location.pathname).toBe('/');

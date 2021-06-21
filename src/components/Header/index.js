@@ -20,7 +20,7 @@ export default function Header({ user }) {
         </a>
         <div className={styles.userInfo}>
           <span>{`Usuário: ${user}`}</span>
-          <button type="button" onClick={handleLogout}>Sair</button>
+          <button type="button" onClick={handleLogout} id="logout">Sair</button>
         </div>
       </div>
     </header>

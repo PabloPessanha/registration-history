@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export default function UserCard({ user, main, handleDelete }) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-testid="card">
       <div className={styles.infos}>
         <h2>
           <strong>Usuário: </strong>
