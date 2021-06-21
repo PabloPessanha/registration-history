@@ -9,7 +9,7 @@ export default function Header({ user }) {
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem('logged');
-    history.push('/');
+    history.push('/login');
   });
 
   return (
