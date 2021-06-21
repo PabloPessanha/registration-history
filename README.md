@@ -9,12 +9,14 @@ O desafio consiste em criar duas páginas, a primeira é para realização de ca
 
 E a segunda tela conterá um header, um footer e todos os registros realizados na máquina(armazenado no `localstorage`), na qual o usúario só pode deletar seu próprio registro.
 
-Caso tente acessar a página de resgistro sem ter feito login/cadastro, a página exibirá uma mensagem negando o acesso, e redirecionando 2 segundos depois para a página de cadastro.
+Caso tente acessar a página de resgistro sem ter feito login/cadastro, a página exibirá uma mensagem negando o acesso, e dando a possibilidade para retornar a página de cadastro.
+
+Também foi incluido outras páginas extras, tais como a de login e página não encontrada, caso tente acessar uma URL que não existe.
 
 #
 
 ## Como posso testar aplicação?
-Tomei a liberdade de fazer o deploy da aplicação no Heroku, está disponivel aqui: 
+Tomei a liberdade de fazer o deploy da aplicação no Heroku, [está disponivel aqui](https://pablo-challenge-lean.herokuapp.com/)
 
 *A aplicação demora cerca de 30 segundos pra abrir quando ninguém acessa por 30min, então aguarde um pouco.*
 
@@ -62,7 +64,6 @@ $ npm start
 ## O que foi utilizado durante o desenvolvimento?
 - React;
 - React router dom;
-- Context API;
 - SCSS;
 - Testes unitários com RTL;
 - TDD;
