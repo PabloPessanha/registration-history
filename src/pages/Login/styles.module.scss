@@ -1,0 +1,10 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+
+  .mainImage {
+    width: 80%;
+    background-image: linear-gradient(to bottom, rgba(33, 122, 181, 0.70), rgba(117, 19, 93, 0.73)), url('../../assets/bg-min.jpg');
+    background-size: cover;
+  }
+}
