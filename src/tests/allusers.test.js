@@ -46,6 +46,7 @@ describe('Verifica se a página é renderizada com os elementos requiridos', () 
 });
 
 describe('Verifica se todas as funcionalidades da página estão de acordo com o proposto', () => {
+  global.scrollTo = jest.fn();
   beforeEach(() => {
     localStorage.setItem('logged', JSON.stringify(users[0]));
     localStorage.setItem('users', JSON.stringify([users[0]]));
