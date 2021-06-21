@@ -1,9 +1,10 @@
 import React from 'react';
+import { Header } from '../../components';
 
 export default function AllUsers() {
   return (
     <div>
-      <h1>Página de usúarios</h1>
+      <Header />
     </div>
   );
 }
