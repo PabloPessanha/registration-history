@@ -31,4 +31,18 @@ header {
       }
     }
   }
+
+  @media only screen and(max-width: 768px) {
+    .infoContainer {
+      max-width: 90vw;
+      .userInfo {
+        span {
+          font-size: 0.9rem;
+        }
+        button {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
 }
