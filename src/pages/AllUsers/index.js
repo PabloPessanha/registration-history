@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router';
-import { Header, Footer, NotLogged, UserCard } from '../../components';
+import { Header, Footer, NotLogged, UserCard, ConfirmDelete } from '../../components';
 import styles from './styles.module.scss';
 
 export default function AllUsers() {
@@ -32,20 +32,10 @@ export default function AllUsers() {
   return (
     <div>
       { confirmDelete && (
-      <div className={styles.confirmDelete}>
-        <div className={styles.confirmMessage}>
-          <h2>Fazer isso ira deletar sua conta permanentemente.</h2>
-          <h4>Você tem certeza disso?</h4>
-          <hr />
-          <div className={styles.buttons}>
-            <button type="button" onClick={deleteConfirmed}>Sim</button>
-            <button type="button" onClick={() => setConfirmDelete(false)}>Não</button>
-          </div>
-        </div>
-      </div>
+        <ConfirmDelete deleteConfirmed={deleteConfirmed} confirm={() => setConfirmDelete(false)} />
       )}
       <Header user={user} />
-      <h1 style={{ textAlign: 'center', marginTop: '24px' }}>Usuários cadastrados</h1>
+      <h1 className={styles.title}>Usuários cadastrados</h1>
       { users.map((usr) => (
         <UserCard
           key={usr.email}
