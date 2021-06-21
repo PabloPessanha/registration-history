@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { cpfFormatter, phoneFormatter } from '../../utils';
 import leanLogo from '../../assets/Leanwork-logo.svg';
 
-export default function RegisterInputs() {
+export default function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
@@ -29,7 +29,15 @@ export default function RegisterInputs() {
 
   const handleSignup = useCallback((e) => {
     e.preventDefault();
-    localStorage.setItem('logged', JSON.stringify({ name, email, cpf, tel }));
+    const users = JSON.stringify(localStorage.getItem('users'));
+    const user = { name, email, cpf, tel };
+    if (users) {
+      localStorage.setItem('users', JSON.stringify([user]));
+    } else {
+      localStorage.setItem('users', JSON.stringify([...users, user]));
+    }
+
+    localStorage.setItem('logged', JSON.stringify(user));
     history.push('/users');
   }, [name, email, cpf, tel]);
 
