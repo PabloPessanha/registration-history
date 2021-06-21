@@ -6,8 +6,7 @@
 
   max-width: 550px;
   margin: 18px auto;
-  padding: 32px;
-  border-radius: 50px;
+  padding: 24px;
 
   display: flex;
   flex-direction: row;
@@ -19,5 +18,12 @@
     font-weight: 600;
     color: #f44049;
     font-size: 1rem;
+  }
+
+  h2, h4 {
+    font-weight: 400;
+  }
+  hr {
+    border: 1px solid #ddd;
   }
 }

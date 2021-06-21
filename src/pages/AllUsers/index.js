@@ -47,6 +47,7 @@ export default function AllUsers() {
       <h1 style={{ textAlign: 'center', marginTop: '24px' }}>Usuários cadastrados</h1>
       { users.map((usr) => (
         <UserCard
+          key={usr.email}
           user={usr}
           main={usr.email === user}
           handleDelete={handleDelete}

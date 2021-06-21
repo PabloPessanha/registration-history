@@ -6,9 +6,23 @@ export default function UserCard({ user, main, handleDelete }) {
   return (
     <div className={styles.card}>
       <div className={styles.infos}>
-        <h2>{user.email}</h2>
-        <h4>{user.cpf}</h4>
-        <h4>{user.tel}</h4>
+        <h2>
+          <strong>Usuário: </strong>
+          {user.name}
+        </h2>
+        <hr />
+        <h4>
+          <strong>Email: </strong>
+          {user.email}
+        </h4>
+        <h4>
+          <strong>CPF: </strong>
+          {user.cpf}
+        </h4>
+        <h4>
+          <strong>Tel/Celular: </strong>
+          {user.tel}
+        </h4>
       </div>
       { main && (
         <div>
