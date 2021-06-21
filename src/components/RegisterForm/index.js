@@ -29,9 +29,9 @@ export default function RegisterForm() {
 
   const handleSignup = useCallback((e) => {
     e.preventDefault();
-    const users = JSON.stringify(localStorage.getItem('users'));
+    const users = JSON.parse(localStorage.getItem('users'));
     const user = { name, email, cpf, tel };
-    if (users) {
+    if (!users) {
       localStorage.setItem('users', JSON.stringify([user]));
     } else {
       localStorage.setItem('users', JSON.stringify([...users, user]));
