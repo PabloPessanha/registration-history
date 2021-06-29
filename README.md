@@ -87,6 +87,6 @@ $ npm start
 - React;
 - React router dom;
 - SCSS;
-- Testes unitários com RTL;
+- Testes de integração com RTL;
 - TDD;
 - Deploy na plataforma **Heroku**;
