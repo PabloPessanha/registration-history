@@ -1,7 +1,5 @@
-# Desafio frontend
-
 ## Proposta e organização
-O desafio consiste em criar duas páginas, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
+A ideia consiste em criar duas páginas, a primeira é para realização de cadastros/login, na qual é realizada checagem para verificar de validação no sistema, e se os inputs estão preenchidos de forma correta. Os inputs são:
 - Nome completo;
 - CPF;
 - Telefone;
@@ -10,8 +8,6 @@ O desafio consiste em criar duas páginas, a primeira é para realização de ca
 E a segunda tela conterá um header, um footer e todos os registros realizados na máquina(armazenado no `localstorage`), na qual o usuário só pode deletar seu próprio registro.
 
 Caso tente acessar a página de resgistro sem ter feito login/cadastro, a página exibirá uma mensagem negando o acesso, e dando a possibilidade para retornar a página de cadastro.
-
-Também foi incluido outras páginas extras, tais como a de login e página não encontrada, caso tente acessar uma URL que não existe.
 
 - #### Página de cadastro:
   - [x] O botão só ativa quando todos os campos estão preenchidos corretamente, e então, altera a cor;
@@ -26,10 +22,10 @@ Também foi incluido outras páginas extras, tais como a de login e página não
   - [x] O campo **CPF** é formatados com base na quantidade digitada;
   - [x] Não permite o login se **Email** já não estiver cadastrado;
   - [x] Não permite o login se o **CPF** não for condizente com o **Email** registrado;
-  - [x] Redireciona para página `users` quando é clicado no botão;
+  - [x] Redireciona para página `/users` quando é clicado no botão;
   - [x] Redireciona para página `/` quando é clicado no link;
 - #### Página de usuários:
-  - [x] A página possui um header, com um link na logo da empresa, o usuário que está logado e um botão sair;
+  - [x] A página possui um header, com a logo, o usuário que está logado e um botão sair;
   - [x] A página possui um footer, com um link para o meu GitHub;
   - [x] A página renderiza um card para todos os usuários já cadastrados no site;
   - [x] Cada card possui as informações dos usuários em si;
