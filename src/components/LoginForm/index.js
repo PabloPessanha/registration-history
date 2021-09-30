@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { cpfFormatter } from '../../utils';
 import styles from './styles.module.scss';
-import leanLogo from '../../assets/Leanwork-logo.svg';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -44,8 +43,11 @@ export default function LoginForm() {
   return (
     <div className={styles.registerSide}>
       <div className={styles.imageContainer}>
-        <img src={leanLogo} alt="Logo da lean" />
-        <h1>Lean login</h1>
+        <h1 className={styles.heroTitle}>
+          <strong>Regis</strong>
+          tory
+        </h1>
+        <h1>Login</h1>
       </div>
       <form>
         { warningUser === 'no user' && <h4 id="warning" className={styles.warning}>Usuário não existe.</h4>}

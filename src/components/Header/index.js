@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
-import leanLogo from '../../assets/Leanwork-logo.svg';
 
 export default function Header({ user }) {
   const history = useHistory();
@@ -15,9 +14,10 @@ export default function Header({ user }) {
   return (
     <header className={styles.header}>
       <div className={styles.infoContainer}>
-        <a href="https://www.leanwork.com.br/">
-          <img src={leanLogo} alt="lean logo" />
-        </a>
+        <h1 className={styles.heroTitle}>
+          <strong>Regis</strong>
+          tory
+        </h1>
         <div className={styles.userInfo}>
           <span>{`Usuário: ${user}`}</span>
           <button type="button" onClick={handleLogout} id="logout">Sair</button>

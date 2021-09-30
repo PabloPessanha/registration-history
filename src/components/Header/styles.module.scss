@@ -10,10 +10,15 @@ header {
     align-items: center;
     margin: 0 auto;
 
-    img {
-      width: 50px;
-      border-radius: 100px;
+    .heroTitle {
+      color: yellowgreen;
+      font-weight: 400;
+
+      strong {
+        color: green;
+      }
     }
+  
     .userInfo {
       display: flex;
       flex-direction: column;

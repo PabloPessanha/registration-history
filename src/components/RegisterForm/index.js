@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { cpfFormatter, phoneFormatter } from '../../utils';
-import leanLogo from '../../assets/Leanwork-logo.svg';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
@@ -56,9 +55,12 @@ export default function RegisterForm() {
 
   return (
     <div className={styles.registerSide}>
-      <div className={styles.imageContainer}>
-        <img src={leanLogo} alt="Logo da lean" />
-        <h1>Lean cadastro</h1>
+      <div className={styles.logoContainer}>
+        <h1 className={styles.heroTitle}>
+          <strong>Regis</strong>
+          tory
+        </h1>
+        <h1>Cadastro</h1>
       </div>
       <form>
         { warning && <h4 className={styles.warning}>Email/CPF já cadastrado.</h4>}
